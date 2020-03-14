@@ -9,6 +9,6 @@ Conclusions: Our novel FLAIM-DNN-475 model outperformed all other machine learni
 
 Keywords: Trauma, mortality prediction, deep neural network, Mortality AT ICU
 
-# Contributors: Fahad Shabbir Ahmed. MD, Liaqat Ali. MS, Bellal A. Joseph. MD, FACS, Asad Ikram. MD, Raza-ul-Mustafa. MS, Syed Ahmad Chan Bukhari. PhD
+## Contributors: Fahad Shabbir Ahmed. MD, Liaqat Ali. MS, Bellal A. Joseph. MD, FACS, Asad Ikram. MD, Raza-ul-Mustafa. MS, Syed Ahmad Chan Bukhari. PhD
 
 
