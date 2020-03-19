@@ -71,4 +71,4 @@ EXECUTE.
 
 IF  (((wbc_min + wbc_max) / 2) < 4.5 | ((wbc_min + wbc_max) / 2)  > 11) 
     wbc_Abnorm1=1.
-EXECUTE.
+EXECUTE. 
