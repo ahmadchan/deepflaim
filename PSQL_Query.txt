@@ -1,0 +1,279 @@
+(c) Fahad S. Ahmed, MD
+
+\c mimic;
+set search_path to mimiciii;
+
+SELECT * INTO Trauma_icu  
+ FROM services  
+ WHERE curr_service = 'TRAUM';
+
+\d ich;
+SELECT COUNT(*) FROM Trauma_icu;
+
+COPY (SELECT * FROM Trauma_icu)
+To 'c:/mimic/Trauma_icu.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM admissions
+	INNER JOIN Trauma_icu ON admissions.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_admission.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM callout
+	INNER JOIN Trauma_icu ON callout.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_callout.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM cptevents
+	INNER JOIN Trauma_icu ON cptevents.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_cptevents.csv' WITH CSV HEADER;
+
+
+COPY (SELECT * 
+	FROM datetimeevents
+	INNER JOIN Trauma_icu ON datetimeevents.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_datetimeevents.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM drgcodes
+	INNER JOIN Trauma_icu ON drgcodes.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_drgcodes.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM icustays
+	INNER JOIN Trauma_icu ON icustays.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_icsustays.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM microbiologyevents
+	INNER JOIN Trauma_icu ON microbiologyevents.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_microbiologyevents.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM prescriptions 
+	INNER JOIN Trauma_icu ON prescriptions.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_prescriptions.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM procedureevents_mv
+	INNER JOIN Trauma_icu ON procedureevents_mv.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_procedureevents_mv.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM procedures_icd
+	INNER JOIN Trauma_icu ON procedures_icd.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_procedures_icd.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM services
+	INNER JOIN Trauma_icu ON services.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_services.csv' WITH CSV HEADER;
+ 
+COPY (SELECT * 
+	FROM transfers
+	INNER JOIN Trauma_icu ON transfers.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_transfers.csv' WITH CSV HEADER;
+ 
+COPY (SELECT * 
+	FROM inputevents_mv
+	INNER JOIN Trauma_icu ON inputevents_mv.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_inputevents_mv.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM inputevents_cv
+	INNER JOIN Trauma_icu ON inputevents_cv.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_inputevents_cv.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM chartevents 
+	INNER JOIN Trauma_icu ON chartevents.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_chartevents.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM noteevents 
+	INNER JOIN Trauma_icu ON noteevents.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_noteevents.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM labevents 
+	INNER JOIN Trauma_icu ON labevents.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_labevents.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM patients  
+	INNER JOIN Trauma_icu ON patients.subject_id = Trauma_icu.subject_id)
+To 'c:/mimic/Trauma_icu_patients.csv' WITH CSV HEADER;
+
+
+
+-------------------------------------------------------------------
+Materiliazed views save
+
+COPY (SELECT * 
+	FROM angus_sepsis
+	INNER JOIN Trauma_icu ON angus_sepsis.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_angus_sepsis.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM apsiii
+	INNER JOIN Trauma_icu ON apsiii.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_apsiii.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM bloodgasfirstday
+	INNER JOIN Trauma_icu ON bloodgasfirstday.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_bloodgasfirstday.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM bloodgasfirstdayarterial
+	INNER JOIN Trauma_icu ON bloodgasfirstdayarterial.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_bloodgasfirstdayarterial.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM code_status
+	INNER JOIN Trauma_icu ON code_status.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_code_status.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM echodata
+	INNER JOIN Trauma_icu ON echodata.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_echodata.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM elixhauser_ahrq
+	INNER JOIN Trauma_icu ON elixhauser_ahrq.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_elixhauser_ahrq.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM elixhauser_ahrq
+	INNER JOIN Trauma_icu ON elixhauser_ahrq.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_elixhauser_ahrq.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM elixhauser_ahrq_no_drg
+	INNER JOIN Trauma_icu ON elixhauser_ahrq_no_drg.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_elixhauser_ahrq_no_drg.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM elixhauser_ahrq_no_drg_all_icd
+	INNER JOIN Trauma_icu ON elixhauser_ahrq_no_drg_all_icd.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_elixhauser_ahrq_no_drg_all_icd.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM elixhauser_ahrq_score
+	INNER JOIN Trauma_icu ON elixhauser_ahrq_score.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_elixhauser_ahrq_score.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM elixhauser_quan
+	INNER JOIN Trauma_icu ON elixhauser_quan.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_elixhauser_quan.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM elixhauser_quan_score
+	INNER JOIN Trauma_icu ON elixhauser_quan_score.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_elixhauser_quan_score.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM explicit_sepsis
+	INNER JOIN Trauma_icu ON explicit_sepsis.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_explicit_sepsis.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM gcsfirstday
+	INNER JOIN Trauma_icu ON gcsfirstday.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_gcsfirstday.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM icustay_detail
+	INNER JOIN Trauma_icu ON icustay_detail.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_icustay_detail.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM icustay_times
+	INNER JOIN Trauma_icu ON icustay_times.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_icustay_times.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM kdigo_creat
+	INNER JOIN Trauma_icu ON kdigo_creat.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_kdigo_creat.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM labsfirstday
+	INNER JOIN Trauma_icu ON labsfirstday.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_labsfirstday.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM lods
+	INNER JOIN Trauma_icu ON lods.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_lods.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM martin_sepsis
+	INNER JOIN Trauma_icu ON martin_sepsis.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_martin_sepsis.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM meld
+	INNER JOIN Trauma_icu ON meld.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_meld.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM note_counts
+	INNER JOIN Trauma_icu ON note_counts.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_note_counts.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM oasis
+	INNER JOIN Trauma_icu ON oasis.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_oasis.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM qsofa
+	INNER JOIN Trauma_icu ON qsofa.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_qsofa.csv' WITH CSV HEADER;
+                  
+COPY (SELECT * 
+	FROM rrtfirstday
+	INNER JOIN Trauma_icu ON rrtfirstday.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_rrtfirstday.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM saps
+	INNER JOIN Trauma_icu ON saps.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_saps.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM sapsii
+	INNER JOIN Trauma_icu ON sapsii.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_sapsii.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM sirs
+	INNER JOIN Trauma_icu ON sirs.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_sirs.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM sofa
+	INNER JOIN Trauma_icu ON sofa.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_sofa.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM uofirstday
+	INNER JOIN Trauma_icu ON uofirstday.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_uofirstday.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM ventfirstday
+	INNER JOIN Trauma_icu ON ventfirstday.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_ventfirstday.csv' WITH CSV HEADER;
+
+COPY (SELECT * 
+	FROM vitalsfirstday
+	INNER JOIN Trauma_icu ON vitalsfirstday.hadm_id = Trauma_icu.hadm_id)
+To 'c:/mimic/Trauma_icu_vitalsfirstday.csv' WITH CSV HEADER;
+
+
+
+
