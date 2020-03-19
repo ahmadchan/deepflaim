@@ -108,3 +108,4 @@ COXREG los_hospital
   /METHOD=ENTER inr_Abnorm1 
   /PRINT=CI(95)
   /CRITERIA=PIN(.05) POUT(.10) ITERATE(20).
+ 
